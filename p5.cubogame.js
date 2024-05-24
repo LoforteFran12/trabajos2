@@ -8,7 +8,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(240);
   text('vidas=3', 670, 60);
    text('Puntos=0', 670, 30);
   square(ad, 498, 50);
