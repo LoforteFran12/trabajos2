@@ -4,6 +4,9 @@ let vidas = 3
 let puntos = 0
 let y = -30
 let x
+let sq;
+let el;
+
 
 function setup() {
   createCanvas(800, 600);
@@ -13,23 +16,23 @@ function setup() {
 
 function draw() {
   background(220);
+
   text('vidas=3', 670, 60);
   text('Puntos=0', 670, 30);
-  square(ad, 498, 50);
+  sq = createSprite( ad, 498,50,50);
+  
+  sq.shapeColor = color(76,40,130);
+  el = createSprite (10, y, 40);
+  el.shapeColor = color(255, 177, 187);
 
-  ellipse(10, y, 40);
-  y++
-  if (y > 600) {
+  el.velocity.y = 1.0;
 
-    y = -30;
-
-  }
-
-  if (ad > 690) {
+  if (ad > 790) {
     ad -= 10
   }
   if (ad < 0) {
     ad = +10
+    drawSprites();
   }
 }
 
