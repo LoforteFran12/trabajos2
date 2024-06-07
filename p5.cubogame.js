@@ -1,45 +1,39 @@
-let ad = 370
+
 let h = -100
-let vidas = 3
-let puntos = 0
 let y = -30
 let x
-let sq;
-let el;
-
-
+let player;
+let enemy;
 function setup() {
   createCanvas(800, 600);
-  fill(random(255), random(255), random(255));
-
+  enemy = createSprite (random(0,800), y, 40);
+  enemy.shapeColor = color(random(255), random(255), random(255));
+  player = createSprite( 370, 498,50,50);
+  player.shapeColor = color(76,40,130);
 }
 
 function draw() {
-  background(220);
+  clear();
+  background(220,220,220);
+  enemy.velocity.y = 5;
 
-  text('vidas=3', 670, 60);
-  text('Puntos=0', 670, 30);
-  sq = createSprite( ad, 498,50,50);
-  
-  sq.shapeColor = color(76,40,130);
-  el = createSprite (10, y, 40);
-  el.shapeColor = color(255, 177, 187);
-
-  el.velocity.y = 1.0;
-
-  if (ad > 790) {
-    ad -= 10
+  if(enemy.position.y > 600){
+enemy.position.y = y
+enemy.position.x = random(0,800)
   }
-  if (ad < 0) {
-    ad = +10
-    drawSprites();
-  }
+
+  drawSprites();
 }
 
 function keyPressed() {
-  if (key === 'a') {
-    ad -= 20;
-  } else if (key === 'd') {
-    ad += 20;
+  if (keyCode == RIGHT_ARROW) {
+    if (player.position.x < 790) {
+      player.position.x += 20
+    }
+  }
+  else if (keyCode == LEFT_ARROW) {
+    if (player.position.x > 9) {
+      player.position.x -= 20
+    }
   }
 }
